@@ -21,10 +21,11 @@ For this project, I have created a mushroom identification application using tra
 
 - Python 3.10.0
 - TensorFlow 2.9.1
-- Pillow
-- OpenCV
-- Requests
-- Skimage
+- Numpy 1.26.4 
+- Pillow==10.4.0
+- Opencv-python 4.10.0.84 
+- Scikit-image 0.24.0 
+- Scikit-learn 1.5.0
 
 ### Installation
 
@@ -91,7 +92,19 @@ Please contact me to obtain the model file.
 4. **User Feedback**: Navigate to the User feed back tab to see user defined metrics on mushroom prediction accuracy.
 ![image](https://github.com/user-attachments/assets/a2d0ac5f-fe60-4619-8afc-c71cfd63f4b4)
 
+## Attribution for Data Usage
 
+The mushroom species dataset used in this project was sourced from Kaggle and is licensed under the Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license.
+- **Dataset Source:** [Kaggle Dataset](https://www.kaggle.com/datasets/thehir0/mushroom-species)
+- **Authors:** Danil Kuchukov, Artyom Makarov, Damir Abdulayev, thehir0
+- **License:** [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+- **Modifications:** Images were deleted to balance the classes
+
+## Future Improvements
+
+* Cleaner more modern UI design.
+* Saving user input and data to further train the model on new images.
+  
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
