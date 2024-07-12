@@ -3,7 +3,6 @@ import os
 import pathlib
 import matplotlib.pyplot as plt
 
-# Directory paths
 raw_dataset_directory = pathlib.Path(r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\rawData")
 processed_train_directory = pathlib.Path(r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\processedData\train")
 processed_val_directory = pathlib.Path(r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\processedData\val")
@@ -27,7 +26,7 @@ def plot_histogram(image_counts, title):
     plt.xlabel('Number of Images')
     plt.title(title)
     plt.gca().invert_yaxis()
-    plt.yticks(fontsize=8)  # Adjust the font size of y-axis labels here
+    plt.yticks(fontsize=8) 
     plt.show()
 
 def main():

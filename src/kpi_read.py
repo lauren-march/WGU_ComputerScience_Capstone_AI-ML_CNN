@@ -1,7 +1,7 @@
 import pickle
 import matplotlib.pyplot as plt
 
-# Define the path to your model_kpis.pkl file
+
 kpis_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\models\model_kpis.pkl"
 
 def read_kpis(kpis_path):
@@ -29,7 +29,6 @@ def plot_kpis(kpis, save_path):
     plt.ylabel('Values')
     plt.title('Model Key Performance Indicators')
     
-    # Annotate bars with values
     for i, value in enumerate(values):
         plt.text(i, value + 0.01, f'{value:.2f}', ha='center')
     
@@ -40,6 +39,5 @@ if __name__ == "__main__":
     kpis = read_kpis(kpis_path)
     print_kpis(kpis)
     
-    # Define the path to save the KPI bar chart
     save_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\models\kpi_bar_chart.png"
     plot_kpis(kpis, save_path)

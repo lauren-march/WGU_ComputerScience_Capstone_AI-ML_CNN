@@ -10,10 +10,8 @@ from skimage.feature import local_binary_pattern
 import os
 import csv
 
-# Set the base directory for the WGU_CS_Capstone project
 base_dir = os.path.join(os.path.expanduser("~"), "Documents", "GitHub", "WGU_CS_Capstone")
 
-# Paths
 model_path = os.path.join(base_dir, "models", "mushroom_identifier.keras")
 class_names_path = os.path.join(base_dir, "data", "processedData", "class_names.pkl")
 conf_matrix_img_path = os.path.join(base_dir, "data", "modelDataVisualizations", "ConfusionMatrix.jpg")
@@ -21,12 +19,10 @@ accuracy_graph_img_path = os.path.join(base_dir, "data", "modelDataVisualization
 sample_image_path = os.path.join(base_dir, "data", "modelDataVisualizations", "CaloceraViscosaSample.jpg")
 user_feedback_path = os.path.join(base_dir, "data", "user_feedback.csv")
 
-# Load model
 print(f"Loading model from: {model_path}")
 model = tf.keras.models.load_model(model_path)
 print("Model loaded successfully.")
 
-# Load class names
 print(f"Loading class names from: {class_names_path}")
 with open(class_names_path, 'rb') as f:
     class_names = pickle.load(f)
@@ -51,8 +47,8 @@ def preprocess_image(img_path):
 
     # Stack original RGB, LBP, and edges
     img_combined = np.concatenate((img_array, lbp, edges), axis=-1)
-    img_combined = img_combined / 255.0  # Normalize the image
-    img_combined = np.expand_dims(img_combined, axis=0)  # Add batch dimension
+    img_combined = img_combined / 255.0 
+    img_combined = np.expand_dims(img_combined, axis=0)  
     return img_combined
 
 def predict_image(model, img_path, class_names):
@@ -67,7 +63,7 @@ class MushiIDApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Mushi ID")
-        self.geometry("1500x600")  # Set the initial window size
+        self.geometry("1500x600")  
 
         self.tab_control = ttk.Notebook(self)
         
@@ -93,7 +89,6 @@ class MushiIDApp(tk.Tk):
 
         self.tab_control.pack(expand=1, fill='both')
 
-        # Initialize prediction variables
         self.current_prediction = None
 
     def create_getting_started_tab(self):
@@ -123,28 +118,28 @@ class MushiIDApp(tk.Tk):
         
         self.progress_bar = ttk.Progressbar(self.tab2, orient='horizontal', mode='determinate', length=200)
         self.progress_bar.pack(pady=20)
-        self.progress_bar.pack_forget()  # Hide the progress bar initially
+        self.progress_bar.pack_forget() 
 
         self.uploading_image_percent_label = tk.Label(self.tab2, text="uploading image... %")
         self.uploading_image_percent_label.pack(pady=5)
-        self.uploading_image_percent_label.pack_forget()  # Hide the label initially
+        self.uploading_image_percent_label.pack_forget()  
 
         self.upload_button = tk.Button(self.tab2, text="Upload", font=("Helvetica", 16), width=10, height=1, command=self.handle_upload_button)
         self.upload_button.pack(pady=10)
 
         self.result_label = tk.Label(self.tab2, text="Result: The mushroom is likely a { } with a ", font=("Helvetica", 18))
         self.result_label.pack(pady=20)
-        self.result_label.pack_forget()  # Hide the result label initially
+        self.result_label.pack_forget()  
 
         self.confidence_label = tk.Label(self.tab2, font=("Helvetica", 18))
-        self.confidence_label.pack_forget()  # Hide the confidence label initially
+        self.confidence_label.pack_forget()  
 
         self.image_label = tk.Label(self.tab2)
         self.image_label.pack(pady=10)
 
         self.feedback_frame = tk.Frame(self.tab2)
         self.feedback_frame.pack(pady=20)
-        self.feedback_frame.pack_forget()  # Hide the feedback frame initially
+        self.feedback_frame.pack_forget()  
 
         self.yes_button = tk.Button(self.feedback_frame, text="Yes", font=("Helvetica", 16), width=10, height=1, command=lambda: self.log_feedback("correct"))
         self.yes_button.pack(side=tk.LEFT, padx=10)
@@ -166,7 +161,7 @@ class MushiIDApp(tk.Tk):
                 predicted_class, confidence = predict_image(model, file_path, class_names)
                 confidence_percentage = confidence * 100
 
-                self.current_prediction = predicted_class  # Store the current prediction
+                self.current_prediction = predicted_class  
 
                 color = "green" if confidence_percentage > 50 else "red"
                 self.result_label.config(text=f"Result: The mushroom is likely a {predicted_class} with a ", fg="black")
@@ -175,9 +170,9 @@ class MushiIDApp(tk.Tk):
                 self.confidence_label.pack()
 
                 self.show_image(file_path)
-                self.feedback_frame.pack()  # Show the feedback frame
+                self.feedback_frame.pack()  
             except Exception as e:
-                messagebox.showerror("Error", f"An                 error occurred: {e}")
+                messagebox.showerror("Error", f"An error occurred: {e}")
             finally:
                 self.progress_bar.pack_forget()
                 self.uploading_image_percent_label.pack_forget()
@@ -280,7 +275,6 @@ class MushiIDApp(tk.Tk):
         self.image_sample_canvas.grid(row=1, column=2, padx=10, pady=5, sticky="nsew")
         self.load_and_display_image(sample_image_path, self.image_sample_canvas)
 
-        # Make the canvas widgets expand with window resizing
         metrics_frame.grid_rowconfigure(1, weight=1)
         metrics_frame.grid_columnconfigure(0, weight=1)
         metrics_frame.grid_columnconfigure(1, weight=1)

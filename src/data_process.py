@@ -10,11 +10,10 @@ from PIL import Image
 import cv2
 from skimage.feature import local_binary_pattern
 
-# Directory paths
+
 dataset_directory = pathlib.Path(r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\rawData")
 processed_data_dir = pathlib.Path(r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\processedData")
 
-# Parameters
 batch_size = 32
 img_height = 224  
 img_width = 224   
@@ -56,7 +55,7 @@ def preprocess_image(img):
     # Stack original RGB, LBP, and edges
     img_combined = np.concatenate((img_array, lbp, edges), axis=-1)
     
-    return img_combined / 255.0  # Normalize the image
+    return img_combined / 255.0  
 
 def save_images(images, labels, class_names, directory):
     """Save images to the specified directory."""
@@ -65,9 +64,9 @@ def save_images(images, labels, class_names, directory):
         class_dir = directory / class_name
         class_dir.mkdir(parents=True, exist_ok=True)
         preprocessed_img = preprocess_image(img)
-        img_rgb = preprocessed_img[:, :, :3]  # Use only the RGB channels for saving
+        img_rgb = preprocessed_img[:, :, :3] 
         img_path = class_dir / f"{i}.jpg"
-        img_pil = Image.fromarray((img_rgb * 255).astype(np.uint8)).convert('RGB')  # Convert back to [0, 255] for saving
+        img_pil = Image.fromarray((img_rgb * 255).astype(np.uint8)).convert('RGB')  
         img_pil.save(img_path, format='JPEG', quality=85)
 
 def save_dataset_to_hdf5(dataset, directory, dataset_name, class_names):
@@ -87,7 +86,6 @@ def save_dataset_to_hdf5(dataset, directory, dataset_name, class_names):
 
     save_images(images, labels, class_names, processed_data_dir / directory)
 
-    # Save the full preprocessed images for training to HDF5
     with h5py.File(dataset_dir / f'{dataset_name}.h5', 'w') as hf:
         hf.create_dataset('images', data=np.array([preprocess_image(img) for img in images]), compression="gzip")
         hf.create_dataset('labels', data=labels, compression="gzip")
