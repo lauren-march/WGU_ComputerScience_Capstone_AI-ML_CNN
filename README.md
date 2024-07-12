@@ -111,4 +111,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-If you have any questions or suggestions, feel free to reach out!
+If you have any questions or suggestions, feel free to reach out! 
+Also, please checkout my documentation (LaurenMarch_SIM3_Task2.pdf) for more information regarding this project's scope and detailed thesis!
+Thanks and happy foraging! 🍄
