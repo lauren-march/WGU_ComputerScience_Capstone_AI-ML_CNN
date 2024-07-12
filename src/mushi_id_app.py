@@ -10,13 +10,16 @@ from skimage.feature import local_binary_pattern
 import os
 import csv
 
+# Set the base directory for the WGU_CS_Capstone project
+base_dir = os.path.join(os.path.expanduser("~"), "Documents", "GitHub", "WGU_CS_Capstone")
+
 # Paths
-model_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\models\mushroom_identifier.keras"
-class_names_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\processedData\class_names.pkl"
-conf_matrix_img_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\modelDataVisualizations\ConfusionMatrix.jpg"
-accuracy_graph_img_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\modelDataVisualizations\TrainingAndValidation.jpg"
-sample_image_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\modelDataVisualizations\CaloceraViscosaSample.jpg"
-user_feedback_path = r"C:\Users\psycl\Documents\GitHub\WGU_CS_Capstone\data\user_feedback.csv"
+model_path = os.path.join(base_dir, "models", "mushroom_identifier.keras")
+class_names_path = os.path.join(base_dir, "data", "processedData", "class_names.pkl")
+conf_matrix_img_path = os.path.join(base_dir, "data", "modelDataVisualizations", "ConfusionMatrix.jpg")
+accuracy_graph_img_path = os.path.join(base_dir, "data", "modelDataVisualizations", "TrainingAndValidation.jpg")
+sample_image_path = os.path.join(base_dir, "data", "modelDataVisualizations", "CaloceraViscosaSample.jpg")
+user_feedback_path = os.path.join(base_dir, "data", "user_feedback.csv")
 
 # Load model
 print(f"Loading model from: {model_path}")
