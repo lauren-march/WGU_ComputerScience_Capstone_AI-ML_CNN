@@ -1,4 +1,6 @@
-//Please copy and paste this in either your python virtual environment or standard command prompt
-
-pip install tensorflow==2.9.1 numpy==1.26.4 Pillow==10.4.0
-opencv-python==4.10.0.84 scikit-image==0.24.0 scikit-learn==1.5.0
+tensorflow==2.9.1 
+numpy==1.26.4 
+Pillow==10.4.0
+opencv-python==4.10.0.84 
+scikit-image==0.24.0 
+scikit-learn==1.5.0
