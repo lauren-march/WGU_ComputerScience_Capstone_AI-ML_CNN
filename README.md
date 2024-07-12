@@ -2,9 +2,9 @@
 
 Welcome to my capstone project for my Computer Science degree at WGU! 🎓
 
-![image](https://github.com/user-attachments/assets/e56b4f2f-0c56-4be3-a4b3-32b7062c8040)
-
 ## Overview
+
+![image](https://github.com/user-attachments/assets/54b2ce25-eac6-4a2b-84f1-8c0a878f4907)
 
 For this project, I have created a mushroom identification application using transfer learning with a pretrained model (ResNet-50) and a supplemental custom CNN for additional layers. The mushroom identification application is built with Python and TensorFlow along with a user-friendly GUI using Tkinter.
 
